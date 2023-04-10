@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-mongoose.connect("mongodb://127.0.0.1:27017/ejs");
+mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs");
 const blogschema={
     title:String, compose_content:String
 };
@@ -152,8 +152,9 @@ res.redirect("/");
 
 
 
-
-
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(process.env.PORT || 3000,function()
+{
+    console.log("running");
 });
+
+
