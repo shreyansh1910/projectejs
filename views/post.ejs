@@ -1,0 +1,10 @@
+<%-include("partials/header")-%>
+<h1><%=post.title%></h1>
+<div>
+    <p><%=post.compose_content%></p>
+    <form action="/delete/<%=post.title%>" method="post"><button class="btn btn-primary" type="submit">Delete
+
+    </button></form>
+   
+</div>
+<%-include("partials/footer")-%>
