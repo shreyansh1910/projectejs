@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static(__dirname+"/public"));
 mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs");
 const blogschema={
     title:String, compose_content:String
@@ -106,7 +106,7 @@ app.post("/", function(req,res)
  
    
 });
-app.post("/delete/:title",function(req,res)
+app.post("/delete/:title",async function(req,res)
 {
     const t=_.lowerCase(req.params.title);
     
@@ -121,7 +121,7 @@ app.post("/delete/:title",function(req,res)
         {
            console.log("hello" + e.title + " " + e._id +" "+"delete this");
            
-           await blog.findByIdAndDelete(e._id);
+            await blog.findByIdAndDelete(e._id);
         }
     }
 
@@ -132,7 +132,7 @@ app.post("/delete/:title",function(req,res)
    
    
 });
-res.redirect("/");
+ res.redirect("/");
 
 
 
