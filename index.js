@@ -60,7 +60,7 @@ app.get("/", async function(req,res)
     }
     else
       {
-    res.render("home",{home_content:homeStartingContent,post:item});
+    res.render("./home",{home_content:homeStartingContent,post:item});
       }
 
    
@@ -68,15 +68,15 @@ app.get("/", async function(req,res)
 });});
 app.get("/contact",function(req,res)
 {
-    res.render("contact",{contact_content:contactContent});
+    res.render("./contact",{contact_content:contactContent});
 });
 app.get("/about",function(req,res)
 {
-    res.render("about",{about_content:aboutContent});
+    res.render("./about",{about_content:aboutContent});
 });
 app.get("/compose",function(req,res)
 {
-    res.render("compose");
+    res.render("./compose");
 });
 app.post("/compose", async function(req,res)
 {
@@ -103,7 +103,7 @@ app.get("/post/:title",function(req,res)
         if(t===_.lowerCase(e.title) && flag===0)
         {
             flag=1;
-            res.render("post",{post:e})
+            res.render("./post",{post:e})
             
         }
 
@@ -118,7 +118,7 @@ app.get("/post/:title",function(req,res)
 app.post("/", function(req,res)
 {
    
-   res.render("compose");
+   res.render("./compose");
  
    
 });
