@@ -16,8 +16,8 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(express.static(__dirname+"/public"));
-mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs");
+app.use(express.static("public"));
+await mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs");
 const blogschema={
     title:String, compose_content:String
 };
@@ -47,7 +47,7 @@ app.get("/",function(req,res)
     }
     else
       {
-    res.render("home",{home_content:homeStartingContent,post:item});
+   res.render("home", { home_content: homeStartingContent, post: item });
       }
 
    
@@ -119,7 +119,7 @@ app.post("/delete/:title",async function(req,res)
        
         if(t===_.lowerCase(e.title))
         {
-           console.log("hello" + e.title + " " + e._id +" "+"delete this");
+           //console.log("hello" + e.title + " " + e._id +" "+"delete this");
            
             await blog.findByIdAndDelete(e._id);
         }
