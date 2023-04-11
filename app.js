@@ -17,7 +17,14 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static("public"));
- mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs");
+//mongoose.connect("mongodb://127.0.0.1:27017/ejs");
+async function run()
+{
+ await mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs");
+};
+run();
+
+
 const blogschema={
     title:String, compose_content:String
 };
@@ -36,18 +43,18 @@ const post1=new blog({
 
 
 
-app.get("/",function(req,res)
+app.get("/", function(req,res)
 {
-    blog.find({}).then(async function(item)
+    blog.find({}).then( async function(item)
 { 
     if(item.length===0)
-    { await post1.save();
+    {  await post1.save();
         res.redirect("/");
 
     }
     else
       {
-   res.render("home", { home_content: homeStartingContent, post: item });
+    res.render("home",{home_content:homeStartingContent,post:item});
       }
 
    
@@ -82,13 +89,16 @@ app.post("/compose", function(req,res)
 app.get("/post/:title",function(req,res)
 {
     const t=_.lowerCase(req.params.title);
+    var flag=0;
   
     blog.find({}).then(function(item)
 {   item.forEach(function(e)
     {
-        if(t===_.lowerCase(e.title))
+        if(t===_.lowerCase(e.title) && flag===0)
         {
+            flag=1;
             res.render("post",{post:e})
+            
         }
 
     });
@@ -106,33 +116,33 @@ app.post("/", function(req,res)
  
    
 });
-app.post("/delete/:title",async function(req,res)
+app.post("/delete/:title",function(req,res)
 {
     const t=_.lowerCase(req.params.title);
-    
-    
+  
     blog.find({}).then(function(item)
 {   item.forEach(async function(e)
     {
         if(item.length >1)
         {
        
-        if(t===_.lowerCase(e.title))
+        if(t===_.lowerCase(e.title) )
         {
-           //console.log("hello" + e.title + " " + e._id +" "+"delete this");
-           
-            await blog.findByIdAndDelete(e._id);
+           console.log("hello" + e.title + " " + e._id +" "+"delete this");
+            
+           await blog.findByIdAndDelete(e._id);
+         
         }
     }
 
     });
-   
+    res.redirect("/");
    
 
    
    
 });
- res.redirect("/");
+
 
 
 
