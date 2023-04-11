@@ -122,11 +122,11 @@ app.post("/", function(req,res)
  
    
 });
-app.post("/delete/:title",function(req,res)
+app.post("/delete/:title",async function(req,res)
 {
     const t=_.lowerCase(req.params.title);
   
-    blog.find({}).then(function(item)
+    await blog.find({}).then(function(item)
 {   item.forEach(async function(e)
     {
         if(item.length >1)
