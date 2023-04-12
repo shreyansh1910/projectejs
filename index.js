@@ -19,16 +19,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname+"/public"));
-mongoose.connect("mongodb://127.0.0.1:27017/ejs");
+//mongoose.connect("mongodb://127.0.0.1:27017/ejs");
 //async function run()
-//{
-//   mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs").then(()=> {
-//     console.log("connected md");
-//   })
-//   .catch((err)=>
-//   {
-//     console.log(err);
-//   });
+
+  mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs").then(()=> {
+   console.log("connected md");
+   })
+   .catch((err)=>
+  {
+    console.log(err);
+  });
 //};
 //run();
 
