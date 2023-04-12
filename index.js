@@ -15,6 +15,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 var posts=[];
 app.set('view engine', 'ejs');
+require("dotenv").config();
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -22,7 +23,7 @@ app.use(express.static(__dirname+"/public"));
 //mongoose.connect("mongodb://127.0.0.1:27017/ejs");
 //async function run()
 
-  mongoose.connect("mongodb+srv://haruka:Q0EgRlzbobOITGNC@cluster0.tjdg0lz.mongodb.net/ejs").then(()=> {
+  mongoose.connect(process.env.DB_key).then(()=> {
    console.log("connected md");
    })
    .catch((err)=>
