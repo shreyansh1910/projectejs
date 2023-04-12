@@ -20,16 +20,16 @@ require("dotenv").config();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname+"/public"));
-mongoose.connect("mongodb://127.0.0.1:27017/ejs");
+//mongoose.connect("mongodb://127.0.0.1:27017/ejs");
 //async function run()
 
-//    mongoose.connect(process.env.DB_key).then(()=> {
-//     console.log("connected md");
-//    })
-//     .catch((err)=>
-//    {
-//     console.log(err);
-//   });
+   mongoose.connect(process.env.DB_key).then(()=> {
+    console.log("connected md");
+   })
+    .catch((err)=>
+   {
+    console.log(err);
+ });
 //};
 //run();
 
