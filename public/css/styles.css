@@ -4,16 +4,19 @@
     padding-bottom: 70px;
 }
 .navbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     border: 0;
     border-radius: 0;
     margin-bottom: 0;
     font-size: 12px;
     letter-spacing: 5px;
+    
 }
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
+    font-size:larger;
+    transition-duration: 0.2s;
 }
 
 .footer-padding {
@@ -25,7 +28,7 @@
 	text-align: center;
 	bottom: 0;
 	width: 100%;
-	height: 60px;
+	height: 30px;
 	background-color: #1abc9c;
 }
 
@@ -41,4 +44,31 @@
     text-shadow: -5px 5px 8px #31e8f8;
    
 
+}
+.glass_aqua{
+    background: rgba(12, 222, 255, 0.2);
+border-radius: 3px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(12, 222, 255, 0.3);
+   }
+
+.glass_neon{
+   background: rgba(12, 255, 202, 0.2);
+border-radius: 0px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(12, 255, 202, 0.3);
+}
+.glass_black
+{
+    
+background: rgba(0, 0, 0, 0.27);
+border-radius: 0px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(0, 0, 0, 0.3);
 }

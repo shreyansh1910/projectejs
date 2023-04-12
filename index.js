@@ -20,16 +20,16 @@ require("dotenv").config();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname+"/public"));
-//mongoose.connect("mongodb://127.0.0.1:27017/ejs");
+mongoose.connect("mongodb://127.0.0.1:27017/ejs");
 //async function run()
 
-  mongoose.connect(process.env.DB_key).then(()=> {
-   console.log("connected md");
-   })
-   .catch((err)=>
-  {
-    console.log(err);
-  });
+//   mongoose.connect(process.env.DB_key).then(()=> {
+//    console.log("connected md");
+//    })
+//    .catch((err)=>
+//   {
+//     console.log(err);
+//   });
 //};
 //run();
 
@@ -83,13 +83,15 @@ app.get("/compose",function(req,res)
 });
 app.post("/compose", async function(req,res)
 {
-   
+   if(req.body.Title.length !=0 && req.body.compose_content.length !=0)
+   {
    const  post=new blog({
     compose_content:req.body.compose_content,
     title:req.body.Title
 
    });
    await post.save();
+}
    
    res.redirect("/");
  

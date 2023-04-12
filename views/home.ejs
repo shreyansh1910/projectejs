@@ -1,17 +1,17 @@
 <%-include("partials/header")-%>
 
-<h1  >Home <form style="position:fixed; top:110px ; right:100px; width:70px; height:40px;" action="/" method="post"><button  class="btn btn-primary" name="compose2" type="submit" >COMPOSE</button></form></h1>
+<h1   >Home <form style="position:fixed; top:80px ; right:100px; width:70px; height:40px;" action="/" method="post"><button  class="btn btn-primary glass_aqua" style="border-radius: 30px; color:black;" name="compose2" type="submit" >COMPOSE</button></form></h1>
 
 
 <div >
 <div>
-    <p style="font-family:cursive;"><%=home_content %></p>
+    <p style="font-family:cursive;background-color: whitesmoke;"><%=home_content %></p>
 </div>
 <% for(var i=0;i<post.length;i++){ %>
-  <h1><%=post[i].title%></h1>  
+  <h3 ><span class="glass_aqua" ><%=post[i].title%></span></h3>  
   
  
-  <p   style="margin-top:10px; font-family:cursive; " ><%=post[i].compose_content.substring(0,100)%> ..... 
+  <p   style="margin-top:10px; font-family:cursive ; background-color: whitesmoke; " ><%=post[i].compose_content.substring(0,100)%> ..... 
   <a href="/post/<%=post[i].title%>">Read more</a></p>
 <%}%>
 </div>
